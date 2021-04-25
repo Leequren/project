@@ -1,0 +1,56 @@
+<!-- heroku login<h3><span>Здравствуй юзернейм,</span> <span><%= user.name %></span>, я хочу сказать, что от доты горит жопа (Если захотите поиграть leequren#4443 :())</h3>
+<h3><%= user.role %></h3> -->
+<link rel="stylesheet" href="/assets/personalArea/style.css">
+<!-- <%=  user.role %> -->
+<div class="main">
+    <section id="one">
+        <h1 class="title">Меню</h1>
+        <div class="divider" style="margin-bottom: 10%;"></div>
+        <% if(user.role != 'Customer') {%>
+        <div class="container">
+            <h3>Личный кабинет</h3>
+            <h3>Список моих заказов</h3>
+            <h3>Список всех заказов</h3>
+            <h3><a href="/users/logout">Выйти</a></h3>
+        </div>
+        <% } else {%>
+        <div class="container">
+            <h3>Личный кабинет</h3>
+            <h3>Список существующих проектов</h3>
+            <h3>Список проектов, которые в разработке</h3>
+            <h3>Список выполненных работ</h3>
+            <h3><a href="/users/logout">Выйти</a></h3>
+        </div>
+        <% } %>
+    </section>
+    
+    <section id="two">
+        <h1 class="title">Личный кабинет</h1>
+        <div class="container">
+            <div class="user-info">
+                <span>Ваше Имя: </span>
+                <%= user.name %>
+            </div>
+            <div class="user-info">
+                <span>Ваш e-mail:</span>
+                <%= user.email %>
+            </div>
+            <div class="user-info">
+                <span>Тип аккаунта: </span>
+                <% if(user.role == 'Executor') { %>
+                    <span>Исполнитель</span>
+                <% } %>
+
+                <% if(user.role == 'Customer') { %>
+                    <span>Заказчик</span>
+                <% } %>
+            </div>
+
+            <div class="user-info">
+                <% if(user.role == 'Customer') { %>
+                    <a href="#" class="glo">Добавить заказ</a>
+                <% } %>
+            </div>
+        </div>
+    </section>
+</div>
